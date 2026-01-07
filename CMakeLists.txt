@@ -10,7 +10,14 @@ FetchContent_Declare(ftxui
 )
 FetchContent_MakeAvailable(ftxui)
 
-add_executable(order_matters src/main.cpp)
+add_executable(order_matters src/main.cpp
+        include/component/main_menu.h
+        src/component/main_menu.cpp
+)
+
+target_include_directories(order_matters PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+)
 
 target_link_libraries(order_matters PRIVATE
         # Chose a submodule
