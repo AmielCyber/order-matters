@@ -3,7 +3,7 @@
 
 using namespace ftxui;
 DataTypeSelectionComponent::DataTypeSelectionComponent(
-    const std::vector<std::shared_ptr<DataTypeMember>>& members,
+    const std::vector<std::shared_ptr<DataType>>& members,
     const std::function<void(size_t)>& on_select) {
 
   button_list_container = Container::Vertical({});

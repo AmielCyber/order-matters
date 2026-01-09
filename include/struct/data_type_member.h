@@ -3,10 +3,10 @@
 #include <string>
 #include <utility>
 
-struct DataTypeMember {
-  DataTypeMember(std::string name, const size_t size) : name{std::move(name)}, size{size} {}
+struct DataType {
   const std::string name{};
   const size_t size{};
+  DataType(std::string name, const size_t size) : name(std::move(name)), size(size) {}
 };
 
 #endif //ORDER_MATTERS_DATA_TYPE_MEMBER_H

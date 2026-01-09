@@ -16,6 +16,8 @@ add_executable(order_matters src/main.cpp
         include/struct/data_type_member.h
         include/component/data_type_selection.h
         src/component/data_type_selection.cpp
+        include/component/action_buttons.h
+        src/component/action_buttons.cpp
 )
 
 target_include_directories(order_matters PRIVATE

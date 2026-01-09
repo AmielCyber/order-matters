@@ -7,7 +7,7 @@ class DataTypeSelectionComponent : public ftxui::ComponentBase {
   ftxui::Component button_list_container;
 public:
   DataTypeSelectionComponent(
-      const std::vector<std::shared_ptr<DataTypeMember>>& members,
+      const std::vector<std::shared_ptr<DataType>>& members,
       const std::function<void(size_t)>& on_select
   );
   // Override Render to define the visual layout
