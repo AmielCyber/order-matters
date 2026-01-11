@@ -13,6 +13,16 @@ FetchContent_MakeAvailable(ftxui)
 add_executable(order_matters src/main.cpp
         include/component/main_menu.h
         src/component/main_menu.cpp
+        include/struct/data_type_member.h
+        include/component/data_type_select.h
+        src/component/data_type_selection.cpp
+        include/component/action_buttons.h
+        src/component/action_buttons.cpp
+        include/component/struct_output.h
+        src/component/struct_output.cpp
+        include/component/struct_builder.h
+        src/component/struct_builder.cpp
+        include/struct/builder.h
 )
 
 target_include_directories(order_matters PRIVATE
