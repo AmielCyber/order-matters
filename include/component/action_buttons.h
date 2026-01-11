@@ -5,6 +5,7 @@
 class ActionButtonsComponent : public ftxui::ComponentBase {
   ftxui::Component action_buttons_container;
   int selected_button = 0;
+
 public:
   ActionButtonsComponent(
     const std::function<void()> &on_undo,
@@ -12,6 +13,7 @@ public:
     const std::function<void()> &on_get_size_button,
     const std::function<void()> &on_get_optimal_button
   );
+
   ftxui::Element OnRender() override;
 };
 
