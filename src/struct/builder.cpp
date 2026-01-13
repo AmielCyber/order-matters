@@ -15,7 +15,7 @@ std::string struct_builder::Builder::build(const State state, const std::vector<
       break;
     default: throw std::runtime_error("Unknown state entered.");
   }
-  output += '}';
+  output += "};";
   return output;
 }
 
