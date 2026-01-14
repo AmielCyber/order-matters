@@ -1,6 +1,5 @@
 #include "struct/builder.h"
 #include <format>
-#include <iostream>
 
 std::string struct_builder::Builder::to_string(const State state, const std::vector<DataType> &members) {
   if (members.empty()) return std::string(empty_struct_str);
@@ -38,11 +37,12 @@ std::string struct_builder::Builder::get_member_output_list_with_size(
   std::string output;
 
   for (int i = 0; i < types_added.size() && i < member::max_size; ++i) {
-    output += std::format("  {} {}{{}}; {}\n", types_added.at(i).name, member::names.at(i), get_member_size(struct_layout.at(i))) ;
+    output += std::format("  {} {}{{}}; {}\n", types_added.at(i).name, member::names.at(i),
+                          get_member_size(struct_layout.at(i)));
   }
 
   size_t total_bytes = struct_layout.back().offset + struct_layout.back().type.size + struct_layout.back().padding;
-  output += std::format("  // Struct Size = {} {}\n",total_bytes, total_bytes > 1? "bytes" : "byte");
+  output += std::format("  // Struct Size = {} {}\n", total_bytes, total_bytes > 1 ? "bytes" : "byte");
   return output;
 }
 
@@ -65,7 +65,8 @@ size_t struct_builder::Builder::get_alignment(const std::vector<DataType> &types
   return alignment;
 }
 
-std::vector<struct_builder::StructObject> struct_builder::Builder::get_layout(const std::vector<DataType> &types_added) {
+std::vector<struct_builder::StructObject>
+struct_builder::Builder::get_layout(const std::vector<DataType> &types_added) {
   std::vector<StructObject> struct_layout;
   if (types_added.empty()) {
     return struct_layout;
@@ -76,7 +77,7 @@ std::vector<struct_builder::StructObject> struct_builder::Builder::get_layout(co
   // Get Natural Alignment of Struct
   const size_t alignment = get_alignment(types_added);
   size_t offset = 0;
-  for (const DataType& type: types_added) {
+  for (const DataType &type: types_added) {
     if (!struct_layout.empty() && offset % type.size != 0) {
       size_t padding = 0;
       if (type.size > offset) {
@@ -92,7 +93,7 @@ std::vector<struct_builder::StructObject> struct_builder::Builder::get_layout(co
     offset += type.size;
   }
   // Add any additional padding.
-  struct_layout.back().padding = offset % alignment;
+  struct_layout.back().padding = (alignment - offset % alignment) % alignment;
   return struct_layout;
 }
 
