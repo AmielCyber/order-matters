@@ -76,6 +76,7 @@ namespace struct_builder {
    */
   class Builder {
   public:
+  static constexpr std::string_view empty_struct_str = "struct my_struct {\n};";
     /**
      * Builds a struct based on the passed state, such as just the struct or a struct
      * with size and padding displayed.
@@ -83,7 +84,7 @@ namespace struct_builder {
      * @param members The data type members added to the struct
      * @return string representation of the struct created depending on the state
      */
-    static std::string build(State state, const std::vector<DataType> &members);
+    static std::string to_string(State state, const std::vector<DataType> &members);
 
   private:
     /**
