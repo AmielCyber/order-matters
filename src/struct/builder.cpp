@@ -1,7 +1,9 @@
 #include "struct/builder.h"
 #include <format>
+#include <iostream>
 
-std::string struct_builder::Builder::build(const State state, const std::vector<DataType> &members) {
+std::string struct_builder::Builder::to_string(const State state, const std::vector<DataType> &members) {
+  if (members.empty()) return std::string(empty_struct_str);
   std::string output = "struct my_struct {\n";
   switch (state) {
     case State::BuildMode:

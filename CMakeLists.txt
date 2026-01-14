@@ -23,6 +23,7 @@ add_executable(order_matters src/main.cpp
         src/component/struct_builder.cpp
         include/struct/builder.h
         src/struct/builder.cpp
+        include/model/struct_model.h
 )
 
 target_include_directories(order_matters PRIVATE

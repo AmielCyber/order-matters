@@ -1,18 +1,21 @@
 #ifndef ORDER_MATTERS_STRUCT_BUILDER_H
 #define ORDER_MATTERS_STRUCT_BUILDER_H
 #include "ftxui/component/component_base.hpp"
-#include "struct/data_type_member.h"
-#include "struct/builder.h"
+#include "model/struct_model.h"
 
 class StructBuilderComponent : public ftxui::ComponentBase {
-  std::shared_ptr<std::vector<DataType> > members_added;
-  std::shared_ptr<struct_builder::State> state = std::make_shared<struct_builder::State>(
-    struct_builder::State::BuildMode);
+  // MODEL
+  std::unique_ptr<StructModel> struct_model;
+  ftxui::Component input_container;
+  ftxui::Component output_container;
 
 public:
+  StructBuilderComponent();
+  // VIEW
   ftxui::Element OnRender() override;
 
 private:
+  // CONTROLLER
   void add_member(size_t type_index);
 
   void undo();

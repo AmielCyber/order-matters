@@ -3,18 +3,11 @@
 
 using namespace ftxui;
 
-StructOutputComponent::StructOutputComponent(
-  const std::shared_ptr<std::vector<struct_builder::DataType> > &members_added,
-  const std::shared_ptr<struct_builder::State> &state
-) : types_added(members_added), struct_state(state) {
+StructOutputComponent::StructOutputComponent(const std::string &struct_str) : struct_str(struct_str) {
 }
 
 Element StructOutputComponent::OnRender() {
   return vbox({
-    paragraph(get_struct_output()),
+    paragraph(struct_str),
   });
-}
-
-std::string StructOutputComponent::get_struct_output() const {
-  return struct_builder::Builder::build(*struct_state, *types_added);
 }
